@@ -1,0 +1,275 @@
+Q: What is the Echo framework in Golang?
+A: High-performance, extensible, minimalist, RESTful APIs, web applications.
+
+Q: How do you install the Echo framework?
+A: go get -u github.com/labstack/echo/v4
+
+Q: How do you create a simple Echo server that listens on port 8080?
+A: e := echo.New(); e.GET("/"); e.Start(":8080")
+
+Q: How do you add middleware in Echo?
+A: e.Use(middleware.Logger(), middleware.Recover())
+
+Q: How do you handle form data in Echo?
+A: c.FormValue("name"), c.FormValue("email")
+
+Q: How do you handle JSON data in Echo?
+A: c.Bind(new(User)); c.JSON()
+
+Q: What is a middleware in Echo?
+A: Function, request processing, response processing
+
+Q: How do you create a custom middleware in Echo?
+A: e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {...})
+
+Q: How do you handle static files in Echo?
+A: e.Static("/", "static")
+
+Q: How do you serve an HTML file in Echo?
+A: c.HTML(http.StatusOK, "<h1>Hello, Echo!</h1>")
+
+Q: How do you serve a template file in Echo?
+A: template.ParseGlob("*.html"); e.Renderer
+
+Q: What is an Echo context?
+A: Interface, request, response, path parameters, data
+
+Q: How do you get the request object from the context in Echo?
+A: c.Request()
+
+Q: How do you get the response object from the context in Echo?
+A: c.Response()
+
+Q: How do you set a cookie in Echo?
+A: c.SetCookie(&http.Cookie{Name: "name", Value: "value"})
+
+Q: How do you get a cookie in Echo?
+A: c.Cookie("name")
+
+Q: How do you handle URL parameters in Echo?
+A: c.Param("id")
+
+Q: How do you handle query parameters in Echo?
+A: c.QueryParam("team"), c.QueryParam("member")
+
+Q: How do you bind JSON data to a struct in Echo?
+A: c.Bind(new(User))
+
+Q: How do you handle file uploads in Echo?
+A: c.FormFile("file"); io.Copy(dst, src)
+
+Q: How do you handle file downloads in Echo?
+A: c.File("filename")
+
+Q: How do you log requests in Echo?
+A: e.Use(middleware.Logger())
+
+Q: How do you recover from panics in Echo?
+A: e.Use(middleware.Recover())
+
+Q: How do you secure Echo with HTTPS?
+A: e.StartTLS(":443", "cert.pem", "key.pem")
+
+Q: How do you set headers in Echo?
+A: c.Response().Header().Set("Content-Type", "application/json")
+
+Q: How do you use context values in Echo?
+A: c.Set("key", "value"); c.Get("key")
+
+Q: How do you redirect in Echo?
+A: c.Redirect(http.StatusMovedPermanently, "http://new.url")
+
+Q: How do you handle 404 errors in Echo?
+A: e.HTTPErrorHandler = customHTTPErrorHandler
+
+Q: How do you group routes in Echo?
+A: g := e.Group("/group")
+
+Q: How do you add middleware to a group in Echo?
+A: g.Use(middleware.Logger())
+
+Q: How do you chain middleware in Echo?
+A: e.Use(m1, m2, m3)
+
+Q: How do you handle CORS in Echo?
+A: e.Use(middleware.CORS())
+
+Q: How do you validate request data in Echo?
+A: e.Validator = &CustomValidator{validator: validator.New()}
+
+Q: How do you serve WebSocket in Echo?
+A: e.GET("/ws", echo.WrapHandler(http.HandlerFunc(wsHandler)))
+
+Q: How do you stream response in Echo?
+A: c.Stream(http.StatusOK, "text/event-stream", reader)
+
+Q: How do you set JSON response in Echo?
+A: c.JSON(http.StatusOK, map[string]string{"hello": "world"})
+
+Q: How do you create subdomains in Echo?
+A: e.Subdomain("admin").GET("/", adminHandler)
+
+Q: How do you handle URL query parameters in Echo?
+A: c.QueryParam("key")
+
+Q: How do you bind query parameters to a struct in Echo?
+A: c.BindQueryParams(&struct)
+
+Q: How do you compress responses in Echo?
+A: e.Use(middleware.Gzip())
+
+Q: How do you cache responses in Echo?
+A: e.Use(middleware.Cache())
+
+Q: How do you parse form data in Echo?
+A: c.FormValue("key")
+
+Q: How do you handle multipart form data in Echo?
+A: c.MultipartForm()
+
+Q: How do you write cookies in Echo?
+A: c.SetCookie(&http.Cookie{})
+
+Q: How do you read cookies in Echo?
+A: c.Cookie("name")
+
+Q: How do you set custom error handlers in Echo?
+A: e.HTTPErrorHandler = customHTTPErrorHandler
+
+Q: How do you serve a directory in Echo?
+A: e.Static("/static", "/path/to/static")
+
+Q: How do you set up a logger in Echo?
+A: e.Logger.SetOutput(os.Stdout)
+
+Q: How do you use sessions in Echo?
+A: e.Use(sessions.Sessions("session", store))
+
+Q: How do you handle CSRF in Echo?
+A: e.Use(middleware.CSRF())
+
+Q: How do you use the Echo context to pass data between middleware and handlers?
+A: c.Set("key", "value"); c.Get("key")
+
+Q: How do you parse path parameters in Echo?
+A: c.Param("id")
+
+Q: How do you add custom middleware in Echo?
+A: e.Use(customMiddleware)
+
+Q: How do you serve dynamic content in Echo?
+A: e.GET("/dynamic", dynamicHandler)
+
+Q: How do you return JSON data in Echo?
+A: c.JSON(http.StatusOK, data)
+
+Q: How do you serve a single page application (SPA) in Echo?
+A: e.Static("/", "dist")
+
+Q: How do you return XML data in Echo?
+A: c.XML(http.StatusOK, data)
+
+Q: How do you set response headers in Echo?
+A: c.Response().Header().Set("Header-Name", "value")
+
+Q: How do you write custom log format in Echo?
+A: e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{Format: customFormat}))
+
+Q: How do you set the port for Echo server?
+A: e.Start(":8080")
+
+Q: How do you configure Echo using YAML?
+A: e := echo.New(); e.SetRenderer(rendererFromYAML("config.yaml"))
+
+Q: How do you enable debug mode in Echo?
+A: e.Debug = true
+
+Q: How do you start Echo server with custom address?
+A: e.Start("127.0.0.1:8080")
+
+Q: How do you shutdown Echo gracefully?
+A: e.Shutdown(ctx)
+
+Q: How do you define custom HTTP methods in Echo?
+A: e.Add("CUSTOM", "/path", handler)
+
+Q: How do you handle file responses in Echo?
+A: c.Attachment("path/to/file", "filename")
+
+Q: How do you set up basic authentication in Echo?
+A: e.Use(middleware.BasicAuth(basicAuthValidator))
+
+Q: How do you handle JSONP responses in Echo?
+A: c.JSONP(http.StatusOK, "callback", data)
+
+Q: How do you use rate limiting in Echo?
+A: e.Use(middleware.RateLimiter(rateLimiterConfig))
+
+Q: How do you set a timeout for requests in Echo?
+A: e.Server.ReadTimeout = 10 * time.Second
+
+Q: How do you serve files with custom content type in Echo?
+A: c.File("/path/to/file", "application/octet-stream")
+
+Q: How do you log responses in Echo?
+A: e.Use(middleware.BodyDump(bodyDumpHandler))
+
+Q: How do you set up JWT authentication in Echo?
+A: e.Use(middleware.JWTWithConfig(jwtConfig))
+
+Q: How do you customize logger output in Echo?
+A: e.Logger.SetOutput(customWriter)
+
+Q: How do you set maximum request body size in Echo?
+A: e.Server.MaxHeaderBytes = 1 << 20
+
+Q: How do you bind URL query parameters in Echo?
+A: c.BindQueryParams(&struct)
+
+Q: How do you write middleware in Echo?
+A: func(next echo.HandlerFunc) echo.HandlerFunc {...}
+
+Q: How do you bind form data to a struct in Echo?
+A: c.Bind(&formStruct)
+
+Q: How do you handle panic recovery in Echo?
+A: e.Use(middleware.Recover())
+
+Q: How do you configure middleware in Echo?
+A: middleware.LoggerWithConfig(middleware.LoggerConfig{Format: customFormat})
+
+Q: How do you serve files with custom headers in Echo?
+A: c.File("/path/to/file", "filename"); c.Response().Header().Set("Header-Name", "value")
+
+Q: How do you write tests for Echo handlers?
+A: e := echo.New(); req := httptest.NewRequest(); rec := httptest.NewRecorder()
+
+Q: How do you create route aliases in Echo?
+A: e.GET("/alias", e.Static("/original"))
+
+Q: How do you use context cancellation in Echo?
+A: ctx, cancel := context.WithTimeout(c.Request().Context(), timeout)
+
+Q: How do you handle WebSocket upgrades in Echo?
+A: e.GET("/ws", echo.WrapHandler(wsHandler))
+
+Q: How do you serve compressed files in Echo?
+A: e.Use(middleware.Gzip())
+
+Q: How do you add request ID to logs in Echo?
+A: e.Use(middleware.RequestID())
+
+Q: How do you use custom renderers in Echo?
+A: e.Renderer = customRenderer
+
+Q: How do you handle form-urlencoded data in Echo?
+A: c.FormValue("key")
+
+Q: How do you handle different HTTP methods in Echo?
+A: e.Add("METHOD", "/path", handler)
+
+Q: How do you use JSON Schema validation in Echo?
+A: e.Validator = &CustomValidator{validator: schema.New()}
+
+Q: How do you serve large files in Echo?
+A: c.Stream(http.StatusOK, "application/octet-stream", largeFileReader)
